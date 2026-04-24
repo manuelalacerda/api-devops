@@ -3,21 +3,18 @@ spring:
     name: AutoPecas
 
   datasource:
-    # URL para o container de Vendas (porta 3306)
-    url: jdbc:mysql://localhost:3306/vendas_db
+    # TROQUE localhost por mysql_cp2
+    url: jdbc:mysql://mysql_cp2:3306/checkpoint_db
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
-      # Cria as tabelas automaticamente baseado nas suas classes @Entity
       ddl-auto: update
     show-sql: true
     properties:
       hibernate:
+        # Dica: O Hibernate moderno já detecta o dialeto, 
+        # mas manter o MySQL8Dialect está correto.
         dialect: org.hibernate.dialect.MySQL8Dialect
-
-logging:
-  level:
-    org.hibernate.SQL: DEBUG
